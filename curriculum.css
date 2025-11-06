@@ -1,16 +1,9 @@
-/*
-    IMPORTANTE: Si deseas usar iconos (como los del teléfono, email y web),
-    deberás usar una biblioteca de iconos como Font Awesome. 
-    En este ejemplo, he usado etiquetas <i> con clases genéricas para mantener simple el HTML.
-*/
-
-/* 1. Estilos Generales y Reseteo */
 :root {
-    --color-principal: #6c5ce7; /* Morado/Violeta para el borde si lo deseas */
+    --color-principal: #6c5ce7;
     --color-texto-seccion: #333;
     --color-texto-claro: #555;
-    --fuente-titulo: 'Playfair Display', serif; /* Para el nombre grande */
-    --fuente-cuerpo: 'Roboto', sans-serif; /* Para el resto del texto */
+    --fuente-titulo: 'Playfair Display', serif;
+    --fuente-cuerpo: 'Roboto', sans-serif;
 }
 
 * {
@@ -27,18 +20,17 @@ body {
 }
 
 .cv-container {
-    width: 210mm; /* Simula un tamaño A4 */
+    max-width: 900px;
+    width: 95%;
     min-height: 297mm;
     margin: 0 auto;
     background-color: #fff;
     padding: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Borde morado para replicar el diseño */
     border: 5px solid var(--color-principal); 
     border-radius: 5px;
 }
 
-/* 2. Encabezado y Título */
 .cv-header {
     display: flex;
     justify-content: space-between;
@@ -48,21 +40,20 @@ body {
 
 .nombre-titulo h1 {
     font-family: var(--fuente-titulo);
-    font-size: 3em;
-    font-weight: 400; /* Texto claro */
+    font-size: clamp(2em, 5vw, 3em);
+    font-weight: 400;
     line-height: 1em;
     color: #333;
     letter-spacing: 1px;
 }
 
 .foto-perfil {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    border-radius: 5px; /* Ligeramente redondeado */
+    border-radius: 5px;
 }
 
-/* 3. Estilos de las Secciones */
 h2 {
     font-size: 1.1em;
     font-weight: 700;
@@ -75,10 +66,9 @@ h2 {
 
 .seccion {
     margin-bottom: 25px;
-    padding-right: 10px; /* Separación de la columna */
+    padding-right: 10px;
 }
 
-/* 4. Estilos de la Experiencia y Educación */
 h3 {
     font-size: 1em;
     font-weight: 700;
@@ -94,14 +84,14 @@ h3 {
 }
 
 .experiencia ul, .seccion ul {
-    list-style: disc; /* Puntos de viñeta para la experiencia */
+    list-style: disc;
     margin-left: 20px;
     font-size: 0.95em;
     color: #444;
 }
 
 .seccion ul {
-    list-style: none; /* Quita viñetas para Habilidades */
+    list-style: none;
     margin-left: 0;
 }
 
@@ -111,26 +101,78 @@ h3 {
     color: #444;
 }
 
-/* 5. Estilos de Contacto */
 .seccion-contacto p {
     font-size: 0.95em;
     color: #444;
     margin-bottom: 5px;
 }
 
-/* 6. Diseño de Columnas (Flexbox) */
 .cv-body {
     display: flex;
-    gap: 30px; /* Espacio entre las columnas */
+    gap: 30px;
 }
 
 .columna-izquierda {
-    flex: 2; /* Ocupa 2/3 del espacio */
+    flex: 2;
     padding-right: 15px;
 }
 
 .columna-derecha {
-    flex: 1; /* Ocupa 1/3 del espacio */
+    flex: 1;
     padding-left: 15px;
-    border-left: 1px solid #eee; /* Línea divisoria muy sutil */
+    border-left: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+    
+    body {
+        padding: 10px;
+    }
+    
+    .cv-container {
+        width: 100%;
+        min-height: auto;
+        padding: 20px 15px;
+    }
+
+    .cv-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .nombre-titulo {
+        order: 2;
+        margin-top: 15px;
+    }
+    
+    .foto-contacto-container {
+        order: 1;
+    }
+    
+    .nombre-titulo h1 {
+        font-size: 2.2em;
+        line-height: 0.9em;
+    }
+
+    .cv-body {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .columna-izquierda, .columna-derecha {
+        flex: auto;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .columna-derecha {
+        border-left: none;
+        padding-top: 15px;
+    }
+    
+    .seccion {
+        padding-right: 0;
+    }
 }
